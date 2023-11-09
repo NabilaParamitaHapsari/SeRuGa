@@ -1,0 +1,116 @@
+import {ScrollView, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Home3, Information, Logout, Note, Setting2, Shop} from 'iconsax-react-native';
+import React from 'react';
+import FastImage from 'react-native-fast-image';
+import {ProfileData, BlogList} from '../../../data';
+import {ItemSmall} from '../../components';
+import { fontType, colors } from '../../theme';
+
+const data = BlogList.slice(5);
+const Profile = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.header} backgroundColor= {colors.pich()}>
+        <Text style={styles.title}>SeRuGa   </Text>
+        <Setting2 color={colors.white()} variant="Linear" size={24} />
+        <Logout color={colors.white()} variant="Linear" size={24} />
+      </View>
+      <View style={{gap: 10, alignItems: 'center'}}>
+          <FastImage
+            style={profile.pic} 
+            source={{
+              uri: ProfileData.profilePict,
+              headers: {Authorization: 'someAuthToken'},
+              priority: FastImage.priority.high,
+            }}
+            resizeMode={FastImage.resizeMode.cover}
+          />
+          <View style={{gap: 5, alignItems: 'center'}}>
+            <Text style={profile.name}>{ProfileData.name}</Text>
+            <Text style={profile.info}>~~ Halo ~~{ProfileData.createdAt}
+            </Text>
+          </View>
+          <TouchableOpacity style={profile.buttonEdit}>
+            <Text style={profile.buttonText}>Edit Profile</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.header2}>
+          <Home3 color={colors.white()} variant="Linear" size={25} style={styles.searchIcon} />
+          <Note color={colors.white()} variant="Linear" size={25} style={styles.searchIcon} />
+          <Shop color={colors.white()} variant="Linear" size={25} style={styles.searchIcon} />      
+          <Information color={colors.white()} variant="Linear" size={25} style={styles.searchIcon} />
+
+        </View> 
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingHorizontal: 24,
+          gap: 10,
+          paddingVertical: 20,
+        }}>
+       
+        <View style={{paddingVertical: 10, gap:10}}>
+          {data.map((item, index) => (
+            <ItemSmall item={item} key={index} />
+          ))}
+        </View>
+      </ScrollView>
+         </View>
+  );
+};
+
+export default Profile;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.pich(),
+  },
+  header: {
+    paddingHorizontal: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 52,
+    paddingTop: 8,
+    paddingBottom: 5,
+    gap: 10,
+  },
+  header2: {
+    paddingTop: 25,
+    paddingHorizontal: 25,
+    gap: 79,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 52,
+    
+  },
+  title: {
+    fontSize: 20,
+    fontFamily: fontType['Pjs-ExtraBold'],
+    color: colors.white(),
+  },
+});
+const profile = StyleSheet.create({
+  pic: {width: 150, height: 150, borderRadius: 80},
+  name: {
+    color: colors.black(),
+    fontSize: 20,
+    fontFamily: fontType['Pjs-Bold'],
+    textTransform:'capitalize'
+  },
+  info: {
+    fontSize: 12,
+    fontFamily: fontType['Pjs-Regular'],
+    color: colors.black(),
+  },
+  buttonEdit: {
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    backgroundColor: colors.pich1(),
+    borderRadius: 10,
+  },
+  buttonText: {
+    fontSize: 14,
+    fontFamily: fontType['Pjs-SemiBold'],
+    color: colors.white(),
+  },
+});
