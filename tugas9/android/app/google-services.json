@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "766142512366",
+    "project_id": "seruga2app",
+    "storage_bucket": "seruga2app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766142512366:android:7ce7a35b8f9d02d04747ff",
+        "android_client_info": {
+          "package_name": "com.woco2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-PQwGNRKlauuUh7ewDXr0OIxPQsI3Z-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
